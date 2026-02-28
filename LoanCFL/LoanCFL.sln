@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanLibrary", "LoanLibrary\LoanLibrary.csproj", "{FD8BC809-B039-4CDF-AE03-8AC1653B9282}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanConsoleDisplay", "LoanConsoleDisplay\LoanConsoleDisplay.csproj", "{417384DC-C118-44CF-9CA9-60576690B5A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanTest", "LoanTest\LoanTest.csproj", "{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{FD8BC809-B039-4CDF-AE03-8AC1653B9282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD8BC809-B039-4CDF-AE03-8AC1653B9282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD8BC809-B039-4CDF-AE03-8AC1653B9282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417384DC-C118-44CF-9CA9-60576690B5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417384DC-C118-44CF-9CA9-60576690B5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417384DC-C118-44CF-9CA9-60576690B5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417384DC-C118-44CF-9CA9-60576690B5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
