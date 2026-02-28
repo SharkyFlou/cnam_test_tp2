@@ -9,7 +9,7 @@ namespace LoanLibrary.Interests
     public class InterestRate
     {
         private List<InterestModifier> interestModifiers { get; set; }
-        private float baseModifier = 0.3f;
+        private float _baseModifier = 0.3f;
 
         public InterestRate()
         {
@@ -23,7 +23,7 @@ namespace LoanLibrary.Interests
 
         public float GetInterestSum()
         {
-            float finalRate = baseModifier;
+            float finalRate = _baseModifier;
             foreach (InterestModifier modifier in interestModifiers)
             {
                 finalRate += modifier._rate;

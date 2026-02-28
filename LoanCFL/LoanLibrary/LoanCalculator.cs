@@ -2,14 +2,12 @@
 {
     public class LoanCalculator
     {
-        public static double CalculateMonthlyPayment(
-            double loanAmount,
-            double annualInterestRate,
-            int loanTermInMonths
-        )
+        public static double CalculateMonthlyPayment(Loan loan)
         {
-            double quotient = loanAmount * (annualInterestRate / 12);
-            double divisor = 1 - Math.Pow(1 + (annualInterestRate / 12), -loanTermInMonths);
+            double interestRate = loan.GetTotalInterestRate();
+
+            double quotient = loan.Capital * (interestRate / 12);
+            double divisor = 1 - Math.Pow(1 + (interestRate / 12), -loan.DurationMonths);
             return quotient / divisor;
         }
     }
