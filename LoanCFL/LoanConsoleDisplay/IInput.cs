@@ -1,4 +1,5 @@
 ﻿using LoanLibrary.InsuranceInterest;
+using LoanLibrary.Interests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,8 @@ namespace LoanDisplay
     {
         public InterestInsuranceModifier GetJob();
         public List<InterestInsuranceModifier> GetHabits();
+        public InterestType GetInterestQuality();
+        public int GetDurationInYears();
+        public int GetCurrentYear();
     }
 }

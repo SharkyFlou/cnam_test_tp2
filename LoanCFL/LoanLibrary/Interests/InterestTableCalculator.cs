@@ -33,7 +33,7 @@ namespace LoanLibrary.Interests
             return 25; // For any years above 20, we use the 25-year rate
         }
         
-        public double GetInterestRate(InterestType interestType, int months)
+        public static double GetInterestRate(InterestType interestType, int months)
         {
             int years = (int)Math.Ceiling(months / 12.0);
 

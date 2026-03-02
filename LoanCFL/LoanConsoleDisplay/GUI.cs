@@ -1,5 +1,6 @@
 ﻿using LoanDisplay;
 using LoanLibrary.InsuranceInterest;
+using LoanLibrary.Interests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,24 @@ namespace LoanConsoleDisplay
             _output = output;
         }
 
-        public InterestInsuranceModifier AskForJob(List<InterestInsuranceModifier> availableJobs)
+        public InterestInsuranceModifier GetJob(List<InterestInsuranceModifier> availableJobs)
         {
-
+            _output.AskForJob(availableJobs);
+            return _input.GetJob();
         }
+
+        public List<InterestInsuranceModifier> GetHabits(List<InterestInsuranceModifier> availableHabits)
+        {
+            _output.AskHabits(availableHabits);
+            return _input.GetHabits();
+        }
+
+        public InterestType GetInterestQuality(List<InterestType> interestTypes)
+        {
+            _output.AskInterestQuality(interestTypes);
+            return _input.GetInterestQuality();
+        }
+
+
     }
 }
