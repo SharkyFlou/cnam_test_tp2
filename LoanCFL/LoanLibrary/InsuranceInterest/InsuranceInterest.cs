@@ -1,18 +1,17 @@
-﻿using LoanLibrary.InsuranceInterest;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoanLibrary.Interests
+namespace LoanLibrary.InsuranceInterest
 {
-    public class InterestRate
+    public class InsuranceInterest
     {
         private List<InterestInsuranceModifier> interestModifiers { get; set; }
-        private float _baseModifier = 0.3f;
+        private static readonly float _baseModifier = 0.3f;
 
-        public InterestRate()
+        public InsuranceInterest()
         {
             interestModifiers = new List<InterestInsuranceModifier>();
         }

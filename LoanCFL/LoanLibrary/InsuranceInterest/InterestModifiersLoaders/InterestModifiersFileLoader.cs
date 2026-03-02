@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoanLibrary.InsuranceInterest.LoadModifiers
+namespace LoanLibrary.InsuranceInterest.InterstModifiersFileLoader
 {
     public class InterstModifiersFileLoader : IInterestModifiersLoader
     {
