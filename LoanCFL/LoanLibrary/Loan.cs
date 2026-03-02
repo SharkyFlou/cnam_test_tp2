@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LoanLibrary.InsuranceInterest;
 using LoanLibrary.Interests;
 
 namespace LoanLibrary
@@ -28,7 +29,7 @@ namespace LoanLibrary
             return _interestRate.GetInterestSum();
         }
 
-        public void AddInterestModifier(InterestModifier modifier)
+        public void AddInsuranceInterestModifier(InterestInsuranceModifier modifier)
         {
             _interestRate.AddModifier(modifier);
         }

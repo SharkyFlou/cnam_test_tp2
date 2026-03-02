@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoanLibrary.InsuranceInterest;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,15 @@ namespace LoanLibrary.Interests
 {
     public class InterestRate
     {
-        private List<InterestModifier> interestModifiers { get; set; }
+        private List<InterestInsuranceModifier> interestModifiers { get; set; }
         private float _baseModifier = 0.3f;
 
         public InterestRate()
         {
-            interestModifiers = new List<InterestModifier>();
+            interestModifiers = new List<InterestInsuranceModifier>();
         }
 
-        public void AddModifier(InterestModifier modifier)
+        public void AddModifier(InterestInsuranceModifier modifier)
         {
             interestModifiers.Add(modifier);
         }
@@ -24,7 +25,7 @@ namespace LoanLibrary.Interests
         public float GetInterestSum()
         {
             float finalRate = _baseModifier;
-            foreach (InterestModifier modifier in interestModifiers)
+            foreach (InterestInsuranceModifier modifier in interestModifiers)
             {
                 finalRate += modifier._rate;
             }
