@@ -28,16 +28,34 @@ namespace LoanConsoleDisplay
 
         public List<InterestInsuranceModifier> GetHabits(List<InterestInsuranceModifier> availableHabits)
         {
-            _output.AskHabits(availableHabits);
-            return _input.GetHabits();
+            List<InterestInsuranceModifier> habits = new List<InterestInsuranceModifier>();
+            foreach (InterestInsuranceModifier habit in availableHabits)
+            {
+                _output.AskHabit(habit);
+                if (_input.HasHabit())
+                {
+                    habits.Add(habit);
+                }
+            }
+            return habits;
         }
 
         public InterestType GetInterestQuality(List<InterestType> interestTypes)
         {
             _output.AskInterestQuality(interestTypes);
-            return _input.GetInterestQuality();
+            return _input.GetInterestQuality(interestTypes);
         }
 
+        public int GetDurationInYears()
+        {
+            _output.AskDurationInYears();
+            return _input.GetDurationInYears();
+        }
 
+        public int GetCurrentYear()
+        {
+            _output.AskCurrentYear();
+            return _input.GetCurrentYear();
+        }
     }
 }

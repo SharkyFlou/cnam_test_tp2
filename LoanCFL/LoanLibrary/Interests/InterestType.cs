@@ -8,8 +8,8 @@ namespace LoanLibrary.Interests
 {
     public enum InterestType
     {
-        GoodRate,
-        VeryGoodRate,
-        ExcellentRate
+        GoodRate = 0,
+        VeryGoodRate = 1,
+        ExcellentRate = 2
     }
 }

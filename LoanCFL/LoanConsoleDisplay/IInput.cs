@@ -11,8 +11,8 @@ namespace LoanDisplay
     public interface IInput
     {
         public InterestInsuranceModifier GetJob();
-        public List<InterestInsuranceModifier> GetHabits();
-        public InterestType GetInterestQuality();
+        public bool HasHabit();
+        public InterestType GetInterestQuality(List<InterestType> interestTypes);
         public int GetDurationInYears();
         public int GetCurrentYear();
     }

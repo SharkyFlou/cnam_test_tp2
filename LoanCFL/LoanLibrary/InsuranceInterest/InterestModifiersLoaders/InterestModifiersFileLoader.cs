@@ -29,14 +29,19 @@ namespace LoanLibrary.InsuranceInterest.InterstModifiersFileLoader
 
         }
 
-        //Format is like "ModifierName,ModifierValue,ModifierType"
+        //Format is like "id,ModifierName,ModifierValue,ModifierType"
         private static InterestInsuranceModifier GetInterestInsuranceModifierFromFile(string lineInput)
         {
-            
             string[] splitInput = lineInput.Split(',');
-            string modifierName = splitInput[0];
-            float modifierValue = float.Parse(splitInput[1]);
-            string modifierType = splitInput[2];
+            if(splitInput.Length != 4)
+            {
+                throw new Exception("Invalid line format in file.");
+            }
+
+            int id = int.Parse(splitInput[0]);
+            string modifierName = splitInput[1];
+            float modifierValue = float.Parse(splitInput[2]);
+            string modifierType = splitInput[3];
             InterestInsuranceType insuranceType;
             switch (modifierType)
             {
