@@ -3,6 +3,7 @@ using LoanLibrary.InsuranceInterest;
 using LoanLibrary.InsuranceInterest.InterstModifiersFileLoader;
 using LoanLibrary.Interests;
 using LoanLibrary.LoanData;
+using LoanLibrary.Rules;
 
 namespace LoanApp
 {
@@ -26,12 +27,28 @@ namespace LoanApp
             Loan loan = GetLoan(gui, availableJobs, availableHabits);
 
             //getting current year
+            int currentYear = GetCurrentYear(gui, loan.DurationMonths/12);
+
+            //calculate summary
+            var summary = LoanLibrary.LoanCalculator.CalculateLoanSummary(loan, currentYear * 12);
+
+            //display result, 
+            output.DisplayResult(summary);
+        }
+
+        private static int GetCurrentYear(LoanConsoleDisplay.GUI gui, int maxYear)
+        {
             int currentYear = 0;
             while (currentYear <= 0)
             {
                 try
                 {
                     currentYear = gui.GetCurrentYear();
+                    if (currentYear > maxYear)
+                    {
+                        currentYear = 0;
+                        throw new Exception($"Current year cannot be greater than loan duration ({maxYear} years).");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -39,11 +56,7 @@ namespace LoanApp
                 }
             }
 
-            //calculate summary
-            var summary = LoanLibrary.LoanCalculator.CalculateLoanSummary(loan, currentYear * 12);
-
-            //display result
-            output.DisplayResult(summary);
+            return currentYear;
         }
 
         public static Loan GetLoan(LoanConsoleDisplay.GUI gui, List<InterestInsuranceModifier> availableJobs, List<InterestInsuranceModifier> availableHabits)
@@ -57,6 +70,10 @@ namespace LoanApp
                 try
                 {
                     capital = gui.GetCapital();
+                    if (capital < LoanRules.CAPITAL_MIN)
+                    {
+                        throw new Exception($"Capital must be at least {LoanRules.CAPITAL_MIN}.");
+                    }
                     break;
                 }
                 catch (Exception ex)
@@ -72,6 +89,16 @@ namespace LoanApp
                 try
                 {
                     durationInYears = gui.GetDurationInYears();
+                    if (durationInYears < LoanRules.DURATION_MIN)
+                    {
+                        durationInYears = 0; 
+                        throw new Exception($"Duration must be at least {LoanRules.DURATION_MIN} years.");
+                    }
+                    if (durationInYears > LoanRules.DURATION_MAX)
+                    {
+                        durationInYears = 0; 
+                        throw new Exception($"Duration cannot be greater than {LoanRules.DURATION_MAX} years.");
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -25,7 +25,7 @@ namespace LoanLibrary
         {
             if (monthsElapsed < 0 || monthsElapsed > loan.DurationMonths)
                 throw new ArgumentException("Invalid number of months elapsed.");
-
+             
             double baseMensuality = CalculateLoanMensuality(loan.Interest, loan.Capital, loan.DurationMonths);
             double insuranceMensuality = loan.Capital * (loan.GetTotalInsuranceInterestRate() / 100 / 12);
             double currentCapitalPaid = CalculateCapitalPaid(loan, monthsElapsed);

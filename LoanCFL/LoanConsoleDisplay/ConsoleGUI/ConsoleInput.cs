@@ -10,7 +10,7 @@ namespace LoanDisplay.ConsoleGUI
 {
     public class ConsoleInput : IInput
     {
-        private int GetUserInt()
+        private int GetUserPositiveInt()
         {
             //if fail, throw exception, otherwise return result
             int result;
@@ -18,20 +18,23 @@ namespace LoanDisplay.ConsoleGUI
             {
                 throw new Exception("Invalid input, expected an integer.");
             }
+            if(result < 0) {
+                throw new Exception("Invalid input, expected a positive integer.");
+            }
             return result;
         }
         public int GetCurrentYear()
         {
-            return GetUserInt();
+            return GetUserPositiveInt();
         }
 
         public int GetDurationInYears()
         {
-            return GetUserInt();
+            return GetUserPositiveInt();
         }
         public int GetCapital()
         {
-            return GetUserInt();
+            return GetUserPositiveInt();
         }
 
         public bool HasHabit()
@@ -42,7 +45,7 @@ namespace LoanDisplay.ConsoleGUI
 
         public InterestType GetInterestQuality(List<InterestType> interestTypes)
         {
-            int type = GetUserInt();
+            int type = GetUserPositiveInt();
             if (type < 0 || type >= interestTypes.Count)
             {
                 throw new Exception("Invalid input, expected a number corresponding to an interest type.");
@@ -52,7 +55,7 @@ namespace LoanDisplay.ConsoleGUI
 
         public InterestInsuranceModifier GetJob(List<InterestInsuranceModifier> availableJobs)
         {
-            int type = GetUserInt();
+            int type = GetUserPositiveInt();
             if (type < 0 || type >= availableJobs.Count)
             {
                 throw new Exception("Invalid input, expected a number corresponding to a job.");
