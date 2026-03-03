@@ -10,7 +10,7 @@ namespace LoanDisplay
 {
     public interface IInput
     {
-        public InterestInsuranceModifier GetJob();
+        public InterestInsuranceModifier GetJob(List<InterestInsuranceModifier> availableJobs);
         public bool HasHabit();
         public InterestType GetInterestQuality(List<InterestType> interestTypes);
         public int GetDurationInYears();

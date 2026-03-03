@@ -46,9 +46,14 @@ namespace LoanDisplay.ConsoleGUI
             return interestTypes[type];
         }
 
-        public InterestInsuranceModifier GetJob()
+        public InterestInsuranceModifier GetJob(List<InterestInsuranceModifier> availableJobs)
         {
-            throw new NotImplementedException();
+            int type = GetUserInt();
+            if (type < 0 || type >= availableJobs.Count)
+            {
+                throw new Exception("Invalid input, expected a number corresponding to a job.");
+            }
+            return availableJobs[type];     
         }
     }
 }

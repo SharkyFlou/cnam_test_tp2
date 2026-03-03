@@ -23,7 +23,7 @@ namespace LoanConsoleDisplay
         public InterestInsuranceModifier GetJob(List<InterestInsuranceModifier> availableJobs)
         {
             _output.AskForJob(availableJobs);
-            return _input.GetJob();
+            return _input.GetJob(availableJobs);
         }
 
         public List<InterestInsuranceModifier> GetHabits(List<InterestInsuranceModifier> availableHabits)
