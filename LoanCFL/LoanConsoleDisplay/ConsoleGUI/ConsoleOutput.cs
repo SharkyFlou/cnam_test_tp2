@@ -56,11 +56,12 @@ namespace LoanDisplay.ConsoleGUI
 
         public void DisplayResult(LoanSummary summary)
         {
-            Console.WriteLine($"Months Elapsed\t: {summary.CurrentMonth}");
-            Console.WriteLine($"Base Mensuality\t: {summary.BaseMensuality:F2}");
+            Console.WriteLine($"Months Elapsed\t\t: {summary.CurrentMonth}");
+            Console.WriteLine($"Base Mensuality\t\t: {summary.BaseMensuality:F2}");
             Console.WriteLine($"Insurance Mensuality\t: {summary.InsuranceMensuality:F2}");
-            Console.WriteLine($"Total Interest Paid\t: {summary.TotalInterest:F2}");
-            Console.WriteLine($"Total Insurance Paid\t: {summary.TotalInsuranceInterest:F2}");
+            Console.WriteLine($"Total Mensuality\t: {summary.TotalMensuality:F2}");
+            Console.WriteLine($"Total Interest\t\t: {summary.TotalInterest:F2}");
+            Console.WriteLine($"Total Insurance\t\t: {summary.TotalInsuranceInterest:F2}");
             Console.WriteLine($"Current Capital Paid\t: {summary.CurrentCapitalPaid:F2}");
         }
     }
