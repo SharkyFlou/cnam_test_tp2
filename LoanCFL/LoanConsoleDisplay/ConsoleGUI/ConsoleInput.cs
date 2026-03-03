@@ -29,6 +29,10 @@ namespace LoanDisplay.ConsoleGUI
         {
             return GetUserInt();
         }
+        public int GetCapital()
+        {
+            return GetUserInt();
+        }
 
         public bool HasHabit()
         {

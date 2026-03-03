@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanDisplay", "LoanConsoleD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanTest", "LoanTest\LoanTest.csproj", "{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanApp", "LoanApp\LoanApp.csproj", "{E41B4149-005F-0581-E92B-85EFC6906956}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AB5673B-5D1F-42BE-9CCD-47B3D9D735A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E41B4149-005F-0581-E92B-85EFC6906956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E41B4149-005F-0581-E92B-85EFC6906956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E41B4149-005F-0581-E92B-85EFC6906956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E41B4149-005F-0581-E92B-85EFC6906956}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

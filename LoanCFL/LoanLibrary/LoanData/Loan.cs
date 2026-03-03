@@ -15,7 +15,7 @@ namespace LoanLibrary.LoanData
         private InsuranceInterest.InsuranceInterest _insuranceInterestRate;
         public readonly double Interest;
 
-        public Loan(double capital, int durationMonths, InsuranceInterest.InsuranceInterest insuranceInterestRate, int months, InterestType interestType)
+        public Loan(double capital, int durationMonths, InsuranceInterest.InsuranceInterest insuranceInterestRate, InterestType interestType)
         {
             if (capital < 50000)
                 throw new ArgumentException("Capital minimum 50k");
@@ -23,7 +23,7 @@ namespace LoanLibrary.LoanData
             Capital = capital;
             DurationMonths = durationMonths;
             _insuranceInterestRate = insuranceInterestRate;
-            Interest = InterestTableCalculator.GetInterestRate(interestType, months);
+            Interest = InterestTableCalculator.GetInterestRate(interestType, durationMonths);
         }
 
         public double GetTotalInterestRate()
@@ -34,11 +34,6 @@ namespace LoanLibrary.LoanData
         public double GetTotalInsuranceInterestRate()
         {
             return _insuranceInterestRate.GetInterestSum();
-        }
-
-        public void AddInsuranceInterestModifier(InterestInsuranceModifier modifier)
-        {
-            _insuranceInterestRate.AddModifier(modifier);
         }
     }
 }

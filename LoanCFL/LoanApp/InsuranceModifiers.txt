@@ -1,0 +1,6 @@
+Sportif;-0,05;Habits
+Fumeur;0,15;Habits
+Atteint de trouble cardiaque;0,3;Habits
+Ingénieur informatique;-0,05;Job
+Pilote de chasse;0,15;Job
+Autre;0;Job

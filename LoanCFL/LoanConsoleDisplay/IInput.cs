@@ -15,5 +15,6 @@ namespace LoanDisplay
         public InterestType GetInterestQuality(List<InterestType> interestTypes);
         public int GetDurationInYears();
         public int GetCurrentYear();
+        public int GetCapital();
     }
 }

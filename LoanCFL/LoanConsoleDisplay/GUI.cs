@@ -1,6 +1,7 @@
 ﻿using LoanDisplay;
 using LoanLibrary.InsuranceInterest;
 using LoanLibrary.Interests;
+using LoanLibrary.LoanData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,12 @@ namespace LoanConsoleDisplay
         {
             _input = input;
             _output = output;
+        }
+
+        public int GetCapital()
+        {
+            _output.AskForCapital();
+            return _input.GetCapital();
         }
 
         public InterestInsuranceModifier GetJob(List<InterestInsuranceModifier> availableJobs)
@@ -56,6 +63,11 @@ namespace LoanConsoleDisplay
         {
             _output.AskCurrentYear();
             return _input.GetCurrentYear();
+        }
+
+        public void DisplayMessage(string message)
+        {
+            _output.DisplayMessage(message);
         }
     }
 }

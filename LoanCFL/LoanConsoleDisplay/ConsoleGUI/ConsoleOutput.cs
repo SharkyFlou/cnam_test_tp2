@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LoanDisplay.ConsoleGUI
 {
-    internal class ConsoleOutput : IOutput
+    public class ConsoleOutput : IOutput
     {
         public void AskCurrentYear()
         {
@@ -19,6 +19,11 @@ namespace LoanDisplay.ConsoleGUI
         public void AskDurationInYears()
         {
             Console.WriteLine("Please enter the duration of the loan in years:");
+        }
+
+        public void AskForCapital()
+        {
+            Console.WriteLine("Please enter the capital you want to borrow:");
         }
 
         public void AskForJob(List<InterestInsuranceModifier> availableJobs)
@@ -42,6 +47,11 @@ namespace LoanDisplay.ConsoleGUI
             {
                 Console.WriteLine($"{i}: {interestTypes[i].ToString()}");
             }
+        }
+
+        public void DisplayMessage(string message)
+        {
+            Console.WriteLine(message);
         }
 
         public void DisplayResult(LoanSummary summary)

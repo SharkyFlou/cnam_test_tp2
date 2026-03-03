@@ -8,13 +8,17 @@ namespace LoanLibrary.InsuranceInterest.InterstModifiersFileLoader
 {
     public class InterstModifiersFileLoader : IInterestModifiersLoader
     {
-        public string JsonPath;
+        private string _filePath;
+
+        public void SetFilePath(string filePath)
+            { _filePath = filePath; }
         public List<InterestInsuranceModifier> GetAllInterestInsuranceModifier()
         {
+            
             List<InterestInsuranceModifier> modifiers = new List<InterestInsuranceModifier>();
             try
             {
-                string[] lines = System.IO.File.ReadAllLines(JsonPath);
+                string[] lines = System.IO.File.ReadAllLines(_filePath);
                 foreach (string line in lines)
                 {
                     InterestInsuranceModifier modifier = GetInterestInsuranceModifierFromFile(line);
@@ -29,19 +33,18 @@ namespace LoanLibrary.InsuranceInterest.InterstModifiersFileLoader
 
         }
 
-        //Format is like "id,ModifierName,ModifierValue,ModifierType"
+        //Format is like "ModifierName;ModifierValue;ModifierType"
         private static InterestInsuranceModifier GetInterestInsuranceModifierFromFile(string lineInput)
         {
-            string[] splitInput = lineInput.Split(',');
-            if(splitInput.Length != 4)
+            string[] splitInput = lineInput.Split(';');
+            if(splitInput.Length != 3)
             {
                 throw new Exception("Invalid line format in file.");
             }
 
-            int id = int.Parse(splitInput[0]);
-            string modifierName = splitInput[1];
-            float modifierValue = float.Parse(splitInput[2]);
-            string modifierType = splitInput[3];
+            string modifierName = splitInput[0];
+            float modifierValue = float.Parse(splitInput[1]);
+            string modifierType = splitInput[2];
             InterestInsuranceType insuranceType;
             switch (modifierType)
             {

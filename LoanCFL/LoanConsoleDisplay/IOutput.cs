@@ -16,6 +16,8 @@ namespace LoanDisplay
         public void AskInterestQuality(List<InterestType> interestTypes);
         public void AskDurationInYears();
         public void AskCurrentYear();
+        public void AskForCapital();
         public void DisplayResult(LoanSummary summary);
+        public void DisplayMessage(string message);
     }
 }

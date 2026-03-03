@@ -8,23 +8,18 @@ namespace LoanLibrary.InsuranceInterest
 {
     public class InsuranceInterest
     {
-        private List<InterestInsuranceModifier> interestModifiers { get; set; }
+        private readonly List<InterestInsuranceModifier> _interestModifiers;
         private static readonly float _baseModifier = 0.3f;
 
-        public InsuranceInterest()
+        public InsuranceInterest(List<InterestInsuranceModifier> interestModifiers)
         {
-            interestModifiers = new List<InterestInsuranceModifier>();
-        }
-
-        public void AddModifier(InterestInsuranceModifier modifier)
-        {
-            interestModifiers.Add(modifier);
+            _interestModifiers = interestModifiers;
         }
 
         public float GetInterestSum()
         {
             float finalRate = _baseModifier;
-            foreach (InterestInsuranceModifier modifier in interestModifiers)
+            foreach (InterestInsuranceModifier modifier in _interestModifiers)
             {
                 finalRate += modifier._rate;
             }
