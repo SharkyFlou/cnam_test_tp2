@@ -1,4 +1,6 @@
-﻿using LoanDisplay.ConsoleGUI;
+﻿using LoanConsoleDisplay;
+using LoanDisplay.ConsoleGUI;
+using LoanLibrary;
 using LoanLibrary.InsuranceInterest;
 using LoanLibrary.InsuranceInterest.InterstModifiersFileLoader;
 using LoanLibrary.Interests;
@@ -12,31 +14,34 @@ namespace LoanApp
         public static string InsuranceModifiersFile = "InsuranceModifiers.txt";
         public static void Main(string[] args)
         {
-            //create GUI
+            //create GUI (composition root: concrete types wired here)
             ConsoleInput input = new ConsoleInput();
             ConsoleOutput output = new ConsoleOutput();
-            LoanConsoleDisplay.GUI gui = new LoanConsoleDisplay.GUI(input, output);
+            IGUI gui = new LoanConsoleDisplay.GUI(input, output);
+
+            //create calculators
+            IInterestTableCalculator interestTableCalculator = new InterestTableCalculator();
+            ILoanCalculator loanCalculator = new LoanCalculator();
 
             //get insurances modifiers
-            InterstModifiersFileLoader fileLoader = new InterstModifiersFileLoader();
-            fileLoader.SetFilePath(InsuranceModifiersFile);
+            IInterestModifiersLoader fileLoader = new InterstModifiersFileLoader(InsuranceModifiersFile);
             List<InterestInsuranceModifier> insuranceModifiers = fileLoader.GetAllInterestInsuranceModifier();
             //Habits and Jobs are separated by type, so we can easily filter them
             List<InterestInsuranceModifier> availableJobs = insuranceModifiers.Where(modifier => modifier._interestInsuranceType == InterestInsuranceType.Job).ToList();
             List<InterestInsuranceModifier> availableHabits = insuranceModifiers.Where(modifier => modifier._interestInsuranceType == InterestInsuranceType.Habits).ToList();
-            Loan loan = GetLoan(gui, availableJobs, availableHabits);
+            Loan loan = GetLoan(gui, interestTableCalculator, availableJobs, availableHabits);
 
             //getting current year
             int currentYear = GetCurrentYear(gui, loan.DurationMonths/12);
 
             //calculate summary
-            var summary = LoanLibrary.LoanCalculator.CalculateLoanSummary(loan, currentYear * 12);
+            var summary = loanCalculator.CalculateLoanSummary(loan, currentYear * 12);
 
             //display result, 
             output.DisplayResult(summary);
         }
 
-        private static int GetCurrentYear(LoanConsoleDisplay.GUI gui, int maxYear)
+        private static int GetCurrentYear(IGUI gui, int maxYear)
         {
             int currentYear = 0;
             while (currentYear <= 0)
@@ -59,7 +64,7 @@ namespace LoanApp
             return currentYear;
         }
 
-        public static Loan GetLoan(LoanConsoleDisplay.GUI gui, List<InterestInsuranceModifier> availableJobs, List<InterestInsuranceModifier> availableHabits)
+        public static Loan GetLoan(IGUI gui, IInterestTableCalculator interestTableCalculator, List<InterestInsuranceModifier> availableJobs, List<InterestInsuranceModifier> availableHabits)
         {
             //while loops to get valid loan info
 
@@ -156,11 +161,12 @@ namespace LoanApp
             InsuranceInterest insuranceInterest = new InsuranceInterest(insuranceModifierList);
 
             //create loan
+            double interestRate = interestTableCalculator.GetInterestRate(interestType, durationInYears * 12);
             Loan loan = new Loan(
                 capital,
                 durationInYears * 12,
                 insuranceInterest,
-                interestType
+                interestRate
                 );
             return loan;
         }

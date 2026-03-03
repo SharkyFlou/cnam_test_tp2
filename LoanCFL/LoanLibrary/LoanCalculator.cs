@@ -2,9 +2,9 @@
 
 namespace LoanLibrary
 {
-    public class LoanCalculator
+    public class LoanCalculator : ILoanCalculator
     {
-        private static double CalculateLoanMensuality(double interestRate, double capital, int durationMonths)
+        private double CalculateLoanMensuality(double interestRate, double capital, int durationMonths)
         {
             interestRate /= 100; // Convert percentage to decimal
             double interestRatePerMonth = interestRate /12; // Convert to percentage for display
@@ -14,14 +14,14 @@ namespace LoanLibrary
             return quotient / divisor;
         }
 
-        public static double CalculateTotalInterest(Loan loan)
+        public double CalculateTotalInterest(Loan loan)
         {
             double mensuality = CalculateLoanMensuality(loan.Interest, loan.Capital, loan.DurationMonths);
             return mensuality * loan.DurationMonths - loan.Capital;
         }
 
 
-        public static LoanSummary CalculateLoanSummary(Loan loan, int monthsElapsed)
+        public LoanSummary CalculateLoanSummary(Loan loan, int monthsElapsed)
         {
             if (monthsElapsed < 0 || monthsElapsed > loan.DurationMonths)
                 throw new ArgumentException("Invalid number of months elapsed.");
@@ -44,7 +44,7 @@ namespace LoanLibrary
             );
         }
 
-        private static double CalculateCapitalPaid(Loan loan, int monthsElapsed)
+        private double CalculateCapitalPaid(Loan loan, int monthsElapsed)
         {
             double monthlyInterestRate = loan.Interest / 12 / 100; // Assuming InterestRate is annual
             double monthlyPayment = CalculateLoanMensuality(loan.Interest, loan.Capital, loan.DurationMonths);

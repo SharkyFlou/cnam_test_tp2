@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LoanConsoleDisplay
 {
-    public class GUI
+    public class GUI : IGUI
     {
         IInput _input;
         IOutput _output;

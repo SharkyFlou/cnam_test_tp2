@@ -8,10 +8,13 @@ namespace LoanLibrary.InsuranceInterest.InterstModifiersFileLoader
 {
     public class InterstModifiersFileLoader : IInterestModifiersLoader
     {
-        private string _filePath;
+        private readonly string _filePath;
 
-        public void SetFilePath(string filePath)
-            { _filePath = filePath; }
+        public InterstModifiersFileLoader(string filePath)
+        {
+            _filePath = filePath;
+        }
+
         public List<InterestInsuranceModifier> GetAllInterestInsuranceModifier()
         {
             

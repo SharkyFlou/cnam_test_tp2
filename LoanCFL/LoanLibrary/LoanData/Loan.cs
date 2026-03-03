@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LoanLibrary.InsuranceInterest;
-using LoanLibrary.Interests;
 using LoanLibrary.Rules;
 
 namespace LoanLibrary.LoanData
@@ -16,7 +15,7 @@ namespace LoanLibrary.LoanData
         private InsuranceInterest.InsuranceInterest _insuranceInterestRate;
         public readonly double Interest;
 
-        public Loan(double capital, int durationMonths, InsuranceInterest.InsuranceInterest insuranceInterestRate, InterestType interestType)
+        public Loan(double capital, int durationMonths, InsuranceInterest.InsuranceInterest insuranceInterestRate, double interestRate)
         {
             if (capital < LoanRules.CAPITAL_MIN)
                 throw new ArgumentException("Capital minimum 50k");
@@ -24,7 +23,7 @@ namespace LoanLibrary.LoanData
             Capital = capital;
             DurationMonths = durationMonths;
             _insuranceInterestRate = insuranceInterestRate;
-            Interest = InterestTableCalculator.GetInterestRate(interestType, durationMonths);
+            Interest = interestRate;
         }
 
         public double GetTotalInterestRate()
