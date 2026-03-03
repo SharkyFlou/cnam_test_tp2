@@ -56,15 +56,12 @@ namespace LoanDisplay.ConsoleGUI
 
         public void DisplayResult(LoanSummary summary)
         {
-            Console.WriteLine($"Months Elapsed: {summary.CurrentMonth}");
-            Console.WriteLine($"Total Mensuality: {summary.Mensuality:F2}");
-            Console.WriteLine($"Interest Mensuality: {summary.InterestMensuality:F2}");
-            Console.WriteLine($"Insurance Mensuality: {summary.InsuranceMensuality:F2}");
-            Console.WriteLine($"Total Interest Paid: {summary.TotalInterest:F2}");
-            Console.WriteLine($"Total Insurance Paid: {summary.TotalInsuranceInterest:F2}");
-            Console.WriteLine($"Current Capital Paid: {summary.CurrentCapitalPaid:F2}");
-            Console.WriteLine($"Current Interest Paid: {summary.CurrentInterestPaid:F2}");
-            Console.WriteLine($"Current Insurance Paid: {summary.CurrentInsurancePaid:F2}");
+            Console.WriteLine($"Months Elapsed\t: {summary.CurrentMonth}");
+            Console.WriteLine($"Base Mensuality\t: {summary.BaseMensuality:F2}");
+            Console.WriteLine($"Insurance Mensuality\t: {summary.InsuranceMensuality:F2}");
+            Console.WriteLine($"Total Interest Paid\t: {summary.TotalInterest:F2}");
+            Console.WriteLine($"Total Insurance Paid\t: {summary.TotalInsuranceInterest:F2}");
+            Console.WriteLine($"Current Capital Paid\t: {summary.CurrentCapitalPaid:F2}");
         }
     }
 }

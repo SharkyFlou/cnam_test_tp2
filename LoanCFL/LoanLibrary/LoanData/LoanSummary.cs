@@ -10,28 +10,22 @@ namespace LoanLibrary.LoanData
     {
         public readonly int CurrentMonth;
 
-        public readonly double Mensuality;
-        public readonly double InterestMensuality;
+        public readonly double BaseMensuality;
         public readonly double InsuranceMensuality;
-
+        public double TotalMensuality => BaseMensuality + InsuranceMensuality;
         public readonly double TotalInterest;
         public readonly double TotalInsuranceInterest;
 
         public readonly double CurrentCapitalPaid;
-        public readonly double CurrentInterestPaid;
-        public readonly double CurrentInsurancePaid;
 
-        public LoanSummary(int currentMonth, double mensuality, double interestMensuality, double insuranceMensuality, double totalInterest, double totalInsuranceInterest, double currentCapitalPaid, double currentInterestPaid, double currentInsurancePaid)
+        public LoanSummary(int currentMonth, double baseMensuality, double insuranceMensuality, double totalInterest, double totalInsuranceInterest, double currentCapitalPaid)
         {
             CurrentMonth = currentMonth;
-            Mensuality = mensuality;
-            InterestMensuality = interestMensuality;
+            BaseMensuality = baseMensuality;
             InsuranceMensuality = insuranceMensuality;
             TotalInterest = totalInterest;
             TotalInsuranceInterest = totalInsuranceInterest;
             CurrentCapitalPaid = currentCapitalPaid;
-            CurrentInterestPaid = currentInterestPaid;
-            CurrentInsurancePaid = currentInsurancePaid;
         }
     }
 }
